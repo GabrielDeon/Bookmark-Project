@@ -1,0 +1,11 @@
+{
+  "name": "bookmark-project",
+  "version": "1.0.0",
+  "description": "A project made to enable the user to control and audit each book read",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
