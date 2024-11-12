@@ -1,0 +1,5 @@
+brown - #867070
+brown - #D5B4B4
+brown - #E4D0D0
+brown - #F5EBEB
+yellow - #FEFBD2
