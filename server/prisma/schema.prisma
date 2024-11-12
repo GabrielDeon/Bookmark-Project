@@ -37,39 +37,38 @@ enum BookStatus {
 }
 
 model User {
-  id         String     @id @default(uuid())
-  username   String     @db.VarChar(50)
-  email      String     @unique @db.VarChar(255)
+  id         String    @id @default(uuid())
+  username   String    @db.VarChar(50)
+  email      String    @unique @db.VarChar(255)
   password   String
-  role       Role       @default(USER)
-  created_on DateTime   @default(now())
+  role       Role      @default(USER)
+  created_on DateTime  @default(now())
   deleted_at DateTime?
-  updated_at DateTime   @updatedAt
-  UserBook   UserBook[]
+  updated_at DateTime  @updatedAt
 
+  UserBook    UserBook[]
   BookSummary BookSummary[]
   BookReview  BookReview[]
 }
 
 model Book {
-  id              String        @id @default(uuid())
-  title           String        @db.VarChar(255)
-  author          String        @db.VarChar(255)
-  created_at      DateTime      @default(now())
-  deleted_at      DateTime?
-  updated_at      DateTime      @updatedAt
-  categoryId      String
-  subCategoryId   String?
-  mainCategory    BookCategory  @relation("MainCategory", fields: [categoryId], references: [id])
-  subCategory     BookCategory? @relation("SubCategory", fields: [subCategoryId], references: [id])
-  UserBook        UserBook[]
-  BookSummary     BookSummary[]
-  BookReview      BookReview[]
+  id            String        @id @default(uuid())
+  title         String        @db.VarChar(255)
+  author        String        @db.VarChar(255)
+  created_at    DateTime      @default(now())
+  deleted_at    DateTime?
+  updated_at    DateTime      @updatedAt
+  categoryId    String
+  subCategoryId String?
+  mainCategory  BookCategory  @relation("MainCategory", fields: [categoryId], references: [id])
+  subCategory   BookCategory? @relation("SubCategory", fields: [subCategoryId], references: [id])
+  UserBook      UserBook[]
+  BookSummary   BookSummary[]
+  BookReview    BookReview[]
 
   @@unique([title, author])
   @@index([categoryId])
-  @@index([subCategoryId]) 
-
+  @@index([subCategoryId])
 }
 
 model UserBook {
@@ -78,7 +77,6 @@ model UserBook {
   user               User       @relation(fields: [user_id], references: [id])
   book_id            String
   book               Book       @relation(fields: [book_id], references: [id])
-  rating             Rating?
   status             BookStatus
   begin_at           DateTime
   finished_at        DateTime
@@ -92,11 +90,12 @@ model UserBook {
 }
 
 model BookReview {
-  id      String @id @default(uuid())
+  id      String  @id @default(uuid())
   user_id String
-  user    User   @relation(fields: [user_id], references: [id])
+  user    User    @relation(fields: [user_id], references: [id])
   book_id String
-  book    Book   @relation(fields: [book_id], references: [id])
+  book    Book    @relation(fields: [book_id], references: [id])
+  rating  Rating?
   review  String
 
   @@unique([user_id, book_id])
@@ -117,8 +116,8 @@ model BookSummary {
 }
 
 model BookCategory {
-  id            String  @id @default(uuid())
-  category_name String  @unique
-  mainBooks     Book[]  @relation("MainCategory")
-  subBooks      Book[]  @relation("SubCategory")
+  id            String @id @default(uuid())
+  category_name String @unique
+  mainBooks     Book[] @relation("MainCategory")
+  subBooks      Book[] @relation("SubCategory")
 }

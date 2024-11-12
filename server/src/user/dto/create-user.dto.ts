@@ -1,4 +1,4 @@
-import { IsEmail, IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { IsDate, IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateUserDto {
   @IsString()
@@ -14,10 +14,8 @@ export class CreateUserDto {
 
   @IsEnum(["USER","ADMIN"])
   role: "USER" | "ADMIN";
-  created_on;
+  
+  @IsOptional()
+  @IsDate()
   deleted_at;
-  updated_at;
-  UserBook;
-  BookSummary;
-  BookReview;
 }
