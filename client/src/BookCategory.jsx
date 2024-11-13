@@ -22,14 +22,14 @@ const BookCategory = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='form-category' onSubmit={handleSubmit}>
       {Object.keys(formData).map((field) => (
-        <div key={field} className="form-group">
+        <div key={field} className="category-group">
           <label htmlFor={field}>
             {field.charAt(0).toUpperCase() + field.slice(1)}
           </label>
           <input
-            type="text"
+            type="text-category"
             id={field}
             name={field}
             value={formData[field]}
@@ -37,7 +37,7 @@ const BookCategory = () => {
           />
         </div>
       ))}
-      <button type="submit">Submit</button>
+      <button type="submit-category">Submit</button>
     </form>
   );
 };
