@@ -22,14 +22,14 @@ const BookReview = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='form-review' onSubmit={handleSubmit}>
       {Object.keys(formData).map((field) => (
-        <div key={field} className="form-group">
+        <div key={field} className="review-group">
           <label htmlFor={field}>
             {field.charAt(0).toUpperCase() + field.slice(1)}
           </label>
           <input
-            type="text"
+            type="text-review"
             id={field}
             name={field}
             value={formData[field]}
@@ -37,7 +37,7 @@ const BookReview = () => {
           />
         </div>
       ))}
-      <button type="submit">Submit</button>
+      <button type="submit-review">Submit</button>
     </form>
   );
 };

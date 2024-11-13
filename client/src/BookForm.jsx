@@ -33,7 +33,7 @@ const BookForm = () => {
             {field.charAt(0).toUpperCase() + field.slice(1)}
           </label>
           <input
-            type="text"
+            type="text-form"
             id={field}
             name={field}
             value={formData[field]}
@@ -41,7 +41,7 @@ const BookForm = () => {
           />
         </div>
       ))}
-      <button type="submit">Submit</button>
+      <button type="submit-form">Submit</button>
     </form>
   );
 };
