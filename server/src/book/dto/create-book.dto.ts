@@ -23,9 +23,5 @@ export class CreateBookDto {
 
   @IsOptional()
   @IsString()
-  subCategoryId: string;
-
-  @IsOptional()
-  @IsString()
-  image;
+  subCategoryId: string;  
 }

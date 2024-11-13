@@ -56,20 +56,52 @@ export class BookService {
     }
 
     try {
-      // Create book with image if available
+      // First verify if the main category exists
+      const mainCategory = await this.prisma.bookCategory.findUnique({
+        where: { id: bookData.categoryId }
+      });
+
+      if (!mainCategory) {
+        throw new NotFoundException(`Main category with ID ${bookData.categoryId} not found`);
+      }
+
+      // If subCategoryId is provided, verify it exists
+      if (bookData.subCategoryId) {
+        const subCategory = await this.prisma.bookCategory.findUnique({
+          where: { id: bookData.subCategoryId }
+        });
+
+        if (!subCategory) {
+          throw new NotFoundException(`Sub category with ID ${bookData.subCategoryId} not found`);
+        }
+      }
+
+      // Create book with image and category connections
       return await this.prisma.book.create({
         data: {
-          ...bookData,
+          title: bookData.title,
+          author: bookData.author,
           ...(imageUrl && { image: imageUrl }),
+          mainCategory: {
+            connect: { id: bookData.categoryId }
+          },
+          subCategory: bookData.subCategoryId ? {
+            connect: { id: bookData.subCategoryId }
+          } : undefined,
         },
       });
     } catch (error) {
+      if (error instanceof NotFoundException) {
+        throw error;
+      }
       console.error(`Error creating a new book: ${error.message}`);
       throw new InternalServerErrorException('Failed to create a new book!');
     }
   }
 
   async updateBook(id: string, bookData: UpdateBookDto) {
+    console.log(id);
+        
     try {
       return await this.prisma.book.update({
         where: {

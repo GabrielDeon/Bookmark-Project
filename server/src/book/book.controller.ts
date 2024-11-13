@@ -43,12 +43,12 @@ export class BookController {
 
   @Patch(':id')
   updateBook(@Param('id') id: string, @Body() bookUpdate: UpdateBookDto) {
-    this.bookService.updateBook(id, bookUpdate);
+    return this.bookService.updateBook(id, bookUpdate);
   }
 
-  @Patch(':id')
+  @Patch(':id/soft-delete')
   softDeleteBook(@Param('id') id: string) {
-    this.bookService.softDeleteBook(id);
+    return this.bookService.softDeleteBook(id);
   }
 
   @Delete(':id')

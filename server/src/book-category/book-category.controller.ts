@@ -36,7 +36,7 @@ export class BookCategoryController {
     return this.bookCategoryService.updateBookCategory(id, bookCategoryUpdate);
   }
 
-  @Patch(':id')
+  @Patch(':id/soft-delete')
   softDeleteBookCategory(@Param('id') id: string) {
     return this.bookCategoryService.softDeleteBookCategory(id);
   }
