@@ -1,7 +1,10 @@
 import './App.css';
-import BookForm from './BookForm';
-import BookCategory from './BookCategory';
-import BookReview from './BookReview';
+import BookForm from './pages/BookForm';
+import BookCategory from './pages/BookCategory';
+import BookReview from './pages/BookReview';
+import SigninPage from './pages/SigninPage';
+import SignUpPage from './pages/SignupPage';
+
 
 function App() {
   return (

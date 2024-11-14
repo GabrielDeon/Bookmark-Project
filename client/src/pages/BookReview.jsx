@@ -1,15 +1,11 @@
 import { useState } from 'react';
-import './BookForm.css';
+import '../styles/BookReview.css';
 
-const BookForm = () => {
+const BookReview = () => {
   const [formData, setFormData] = useState({
-    title: '',
-    author: '',
-    mainCategory: '',
-    subCategory: '',
-    UserBook: '',
-    BookSummary: '',
-    BookReview: '',
+    user: '',
+    book: '',
+    review: '',
   });
 
   const handleChange = (e) => {
@@ -26,14 +22,14 @@ const BookForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='form-review' onSubmit={handleSubmit}>
       {Object.keys(formData).map((field) => (
-        <div key={field} className="form-group">
+        <div key={field} className="review-group">
           <label htmlFor={field}>
             {field.charAt(0).toUpperCase() + field.slice(1)}
           </label>
           <input
-            type="text-form"
+            type="text-review"
             id={field}
             name={field}
             value={formData[field]}
@@ -41,9 +37,9 @@ const BookForm = () => {
           />
         </div>
       ))}
-      <button type="submit-form">Submit</button>
+      <button type="submit-review">Submit</button>
     </form>
   );
 };
 
-export default BookForm;
+export default BookReview;
