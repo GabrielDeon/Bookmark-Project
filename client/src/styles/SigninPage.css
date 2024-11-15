@@ -1,0 +1,170 @@
+.page {
+    display: flex;
+    height: 100vh;
+}
+
+.form {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.forminstruction {
+    margin-bottom: 30px;
+}
+
+.formContent>h1 {
+    font-family: Poppins;
+    line-height: 48px;
+    font-weight: 500;
+    font-size: 32px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.formContent>p {
+    line-height: 24px;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.inputLabel {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+}
+
+.input {
+    padding-left: 10px;
+    margin-bottom: 25px;
+    height: 32px;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(217, 217, 217, 1);
+}
+
+.input::placeholder {
+    padding-left: 10px;
+    font-family: Poppins;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 15px;
+    text-align: left;
+    color: rgba(217, 217, 217, 1);
+}
+
+.rememberme {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+}
+
+.rememberme>p {
+    font-family: Poppins;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 13.5px;
+    text-align: left;
+    padding-left: 6px;
+}
+
+#btnSignin {
+    cursor: pointer;
+    color: white;
+    height: 32px;
+    border-radius: 10px;
+    background-color: rgba(58, 91, 34, 1);
+    margin-top: 30px;
+    border: 1px solid rgba(58, 91, 34, 1);
+    font-family: Poppins;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 19.5px;
+    text-align: center;
+}
+
+#btnSignin:hover {
+    background-color: rgba(75, 120, 45, 1);
+    border: 1px solid rgba(75, 120, 45, 1);
+}
+
+.OrText {
+    margin: 10% 0 10% 0;
+    display: flex;
+    justify-content: center;
+}
+
+.OrText>p {
+    font-family: Poppins;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 13.5px;
+}
+
+.outsideSignups {
+    display: flex;
+    justify-content: space-between;
+}
+
+.outsideSignups>button {
+    cursor: pointer;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(217, 217, 217, 1)
+}
+
+.brand {
+    margin-right: 4px;
+}
+
+.outsideSignups button:hover {
+    background-color: black;
+    color: white;
+}
+
+.SingInRedirection {
+    margin-top: 23px;
+    display: flex;
+    justify-content: center;
+    font-family: Poppins;
+}
+
+.SingInRedirection>p {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+
+}
+
+.SingInRedirection a {
+    text-decoration: none;
+    color: rgba(15, 61, 222, 1);
+}
+
+.leftSideImage {
+    flex: 1;
+    background-image: url('../assets/images/books-image.png');
+    background-size: cover;
+    background-position: center;
+    border: none;
+    border-radius: 45px 0px 0px 45px;
+
+}
+
+.error {
+    display: flex;
+    justify-content: center;
+}
