@@ -8,6 +8,8 @@ import { AuthModule } from './auth/auth.module';
 import { BookModule } from './book/book.module';
 import { BookCategoryModule } from './book-category/book-category.module';
 import { BookSummaryModule } from './book-summary/book-summary.module';
+import { BookReviewModule } from './book-review/book-review.module';
+import { UserBookModule } from './user-book/user-book.module';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { BookSummaryModule } from './book-summary/book-summary.module';
     BookModule,
     BookCategoryModule,
     BookSummaryModule,
+    BookReviewModule,
+    UserBookModule,
   ],
   controllers: [AppController],
   providers: [AppService],

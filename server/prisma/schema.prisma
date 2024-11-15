@@ -79,8 +79,8 @@ model UserBook {
   book_id            String
   book               Book       @relation(fields: [book_id], references: [id])
   status             BookStatus
-  begin_at           DateTime
-  finished_at        DateTime
+  begin_at           DateTime?
+  finished_at        DateTime?
   total_number_pages Int
   created_at         DateTime   @default(now())
   deleted_at         DateTime?
