@@ -1,14 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import "../styles/SigninPage.css";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons";
-//import { useNavigate, Link } from "react-router-dom";
-//import axios from "axios";
-//import { jwtDecode } from "jwt-decode";
-//import Cookies from "js-cookie";
-//import AuthenticateToken from "../utils/TokenValidation";
-//import { toast, Bounce } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+import Cookies from "js-cookie";
+import AuthenticateToken from "../utils/TokenValidation";
+import { toast, Bounce } from "react-toastify";
 
 export default function SigninPage() {
   const [email, setEmail] = useState("");
