@@ -1,0 +1,65 @@
+/*-----------------------------PageTitle Section---------------------------*/
+.pageTitle {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 316px;
+    background-size: cover;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .pageTitle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/estatnte.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px);
+    z-index: 1;
+  }
+  
+  .pageTitleContent {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+  }
+  
+  .pageTitleTop>h1 {
+    font-family: Poppins;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 72px;
+  }
+  
+  .pageTitleBot {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .pageTitleBot>p {
+    font-family: Poppins;
+    line-height: 24px;
+    text-align: left;
+  }
+  
+  .pageTitlePath {
+    font-weight: 500;
+    font-size: 16px;
+  }
+  
+  .pageTitleSymb {
+    font-size: 20px;
+  }
+  
+  .pageTitleCurrent {
+    font-weight: 300;
+    font-size: 16px;
+  }
+  
+  /*-----------------------------PageTitle Section End---------------------------*/

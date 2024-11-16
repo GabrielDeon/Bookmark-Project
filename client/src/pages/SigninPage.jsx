@@ -50,7 +50,7 @@ export default function SigninPage() {
         progress: undefined,
         theme: "colored",
         transition: Bounce,
-        onClose: () => navigate("/"),
+        onClose: () => navigate("/home"),
       });
     } catch {
       toast.error(
