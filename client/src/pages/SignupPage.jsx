@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import "../styles/SignupPage.css";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons";
-//import { useNavigate, Link } from "react-router-dom";
-//import axios from "axios";
-//import { toast, Bounce } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
+import { toast, Bounce } from "react-toastify";
 
 export default function SignUpPage() {
   const [username, setUsername] = useState("");
@@ -24,6 +24,7 @@ export default function SignUpPage() {
         username,
         email,
         password,
+        role: "USER"
       });
 
       toast.success("User account created successfully! Welcome aboard!!", {
@@ -127,7 +128,7 @@ export default function SignUpPage() {
           </div>
           <div className="SingInRedirection">
             <p>
-              Have an account? <Link to="/signin">Sign In</Link>
+              Have an account? <Link to="/">Sign In</Link>
             </p>
           </div>
         </div>

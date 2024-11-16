@@ -17,7 +17,7 @@ export default function SigninPage() {
   const navigate = useNavigate();
 
   if (AuthenticateToken()) {
-    window.location.href = "/";
+    //window.location.href = "/";
   }
 
   const handleSubmit = async (event) => {
