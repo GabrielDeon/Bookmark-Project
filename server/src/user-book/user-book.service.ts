@@ -52,7 +52,7 @@ export class UserBookService {
         data: {
           begin_at: userBookData.begin_at,
           status: userBookData.status,
-          total_number_pages: userBookData.total_number_pages,
+          total_number_pages: +userBookData.total_number_pages,
           obs: userBookData.obs,
           user: {
             connect: { id: userBookData.user_id },
@@ -60,9 +60,6 @@ export class UserBookService {
           book: {
             connect: { id: userBookData.book_id },
           },
-        },
-        include: {
-          book: true,
         },
       });
     } catch (error) {

@@ -7,6 +7,7 @@ import {
   IsInt,
   Min,
 } from 'class-validator';
+import { Transform } from 'class-transformer';
 
 enum BookStatus {
   READING = 'READING',
@@ -39,6 +40,7 @@ export class CreateUserBookDto {
   @IsInt()
   @IsNotEmpty()
   @Min(1)
+  @Transform(({ value }) => parseInt(value))
   total_number_pages: number;
 
   @IsString()
