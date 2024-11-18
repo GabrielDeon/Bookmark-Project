@@ -10,6 +10,7 @@ import {
   UseInterceptors,
   ValidationPipe,
   BadRequestException,
+  Query,
 } from '@nestjs/common';
 import { BookService } from './book.service';
 import { CreateBookDto } from './dto/create-book.dto';
@@ -23,6 +24,23 @@ export class BookController {
   @Get(':id')
   findBook(@Param('id') id: string) {
     return this.bookService.findBook(id);
+  }
+
+  @Get()
+  findAllBooks(
+    @Query('page') page: number = 1,
+    @Query('perPage') perPage: number = 16,
+    @Query('filter') filter: string = 'none',
+    @Query('sortOrder') sortOrder: string = 'asc',
+    @Query('categoryId') categoryId: string = 'none',
+  ) {
+    return this.bookService.findAllBooks(
+      page,
+      perPage,
+      filter,
+      sortOrder,
+      categoryId,
+    );
   }
 
   @Post()

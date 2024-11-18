@@ -10,12 +10,18 @@ import { BookCategoryModule } from './book-category/book-category.module';
 import { BookSummaryModule } from './book-summary/book-summary.module';
 import { BookReviewModule } from './book-review/book-review.module';
 import { UserBookModule } from './user-book/user-book.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-    }),    
+    }),       
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..','..', 'Books', 'Image'),
+      serveRoot: '/Image',
+    }),
     UserModule,
     PrismaModule,
     AuthModule,

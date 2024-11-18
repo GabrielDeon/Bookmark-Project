@@ -16,9 +16,14 @@ import { UpdateBookCategoryDto } from './dto/update-book-category.dto';
 export class BookCategoryController {
   constructor(private readonly bookCategoryService: BookCategoryService) {}
 
-  @Get(':id')
-  findBookCategory(@Param('id') id: string) {
-    return this.bookCategoryService.findBookCategory(id);
+  // @Get(':id')
+  // findBookCategory(@Param('id') id: string) {
+  //   return this.bookCategoryService.findBookCategory(id);
+  // }
+
+  @Get('all')
+  findAllBookCategory() {
+    return this.bookCategoryService.findAllBookCategory();
   }
 
   @Post()

@@ -25,6 +25,22 @@ export class BookCategoryService {
     return bookCategory;
   }
 
+  async findAllBookCategory() {
+    let bookCategory = [];
+    try {
+      bookCategory = await this.prisma.bookCategory.findMany({
+        where: { deleted_at: null },
+      });
+    } catch (error) {
+      console.error('Error fetching book category:', error);
+      throw new InternalServerErrorException(
+        'An error occurred while fetching book category.',
+      );
+    }    
+    
+    return bookCategory;
+  }
+
   async createBookCategory(bookCategoryData: CreateBookCategoryDto) {
     try {
       return await this.prisma.bookCategory.create({ data: bookCategoryData });

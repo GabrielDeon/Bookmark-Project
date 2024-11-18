@@ -35,6 +35,80 @@ export class BookService {
     return book;
   }
 
+  async findAllBooks(
+    page: number,
+    perPage: number,
+    filter: string,
+    sortOrder: string,
+    categoryId: string,
+  ) {
+    const offset = (page - 1) * perPage;
+    let orderBy;
+
+    interface WhereClause {
+      deleted_at: null;
+      id_category?: string;
+    }
+
+    const whereClause: WhereClause = { deleted_at: null };
+
+    if (categoryId != 'none') {
+      whereClause.id_category = categoryId;
+    }
+
+    switch (filter) {
+      case 'none':
+        orderBy = undefined;
+        break;
+      case 'name':
+        orderBy = { product_name: sortOrder };
+        break;
+      case 'price':
+        orderBy = { final_price: sortOrder };
+        break;
+      case 'category':
+        orderBy = { id_category: sortOrder };
+        break;
+      default:
+        orderBy = undefined;
+        break;
+    }
+
+    let books;
+
+    try {
+      books = await this.prisma.book.findMany({
+        where: whereClause,
+        include: { mainCategory: true },
+        skip: offset,
+        take: +perPage,
+        orderBy,
+      });
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      throw new InternalServerErrorException(
+        'An error occurred while fetching books.',
+      );
+    }
+
+    if (books.length === 0) {
+      throw new NotFoundException('No product was found!');
+    }
+
+    let totalBooks;
+    let totalPages;
+    try {
+      totalBooks = await this.countBooks();
+      totalPages = Math.ceil(totalBooks / perPage);
+    } catch (error) {
+      throw new InternalServerErrorException(
+        `Error while counting products! Error:${error.message}`,
+      );
+    } finally {
+      return { totalBooks, totalPages, ...books };
+    }
+  }
+
   async createBook(bookData: CreateBookDto, bookImage?: Express.Multer.File) {
     let imageUrl: string | undefined;
 
@@ -133,6 +207,19 @@ export class BookService {
     } catch (error) {
       console.error(`Error hard-deleting a book: ${error.message}`);
       throw new InternalServerErrorException('Failed to hard-delete a book!');
+    }
+  }
+
+  async countBooks() {
+    try {
+      return await this.prisma.book.count({
+        where: { deleted_at: null },
+      });
+    } catch (error) {
+      console.error('Error counting books:', error);
+      throw new InternalServerErrorException(
+        'An error occurred while counting books.',
+      );
     }
   }
 }
