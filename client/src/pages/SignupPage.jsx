@@ -37,7 +37,7 @@ export default function SignUpPage() {
         progress: undefined,
         theme: "colored",
         transition: Bounce,
-        onClose: () => navigate("/signin"),
+        onClose: () => navigate("/"),
       });
     } catch (err) {
       console.error(`Error signing up:`, err);
